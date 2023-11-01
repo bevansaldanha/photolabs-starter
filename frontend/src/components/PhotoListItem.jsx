@@ -1,6 +1,9 @@
 import React from "react";
 
 import "../styles/PhotoListItem.scss";
+import PhotoFavButton from 'components/PhotoFavButton';
+
+
 
 
 // const sampleDataForPhotoListItem = {
@@ -16,14 +19,24 @@ import "../styles/PhotoListItem.scss";
 
 const PhotoListItem = (props) => {
   return (
-      <article className="photo-list-item">
+    <article className="photo-list__item">
+      <PhotoFavButton />
+      <img className=" photo-list__image" src={props.imageSource} />
 
-        <img src={props.imageSource} />
-        <img src={props.profile} />
-        <p>{props.username}</p>
-        <p>{props.location.city},{props.location.country}</p>
 
-      </article>
+      <div className=" photo-list__user-details ">
+
+        <img className=" photo-list__user-profile " src={props.profile} />
+        <div className=" photo-list__user-info ">
+
+          <p className=" photo-list__user-info">{props.username} </p>
+          <p className=" photo-list__user-info photo-list__user-location">{props.location.city}, {props.location.country}</p>
+        </div>
+      </div>
+
+
+    </article>
+
   );
 };
 

@@ -18,24 +18,27 @@ import PhotoFavButton from 'components/PhotoFavButton';
 // };
 
 const PhotoListItem = (props) => {
+  const {urls,user,location} = props
+  console.log(props)
   return (
-    <article className="photo-list__item">
+
+    <li className="photo-list__item">
       <PhotoFavButton />
-      <img className=" photo-list__image" src={props.imageSource} />
+      <img className=" photo-list__image" src={urls.regular} />
 
 
       <div className=" photo-list__user-details ">
 
-        <img className=" photo-list__user-profile " src={props.profile} />
+        <img className=" photo-list__user-profile " src={user.profile} />
         <div className=" photo-list__user-info ">
 
-          <p className=" photo-list__user-info">{props.username} </p>
-          <p className=" photo-list__user-info photo-list__user-location">{props.location.city}, {props.location.country}</p>
+          <p className=" photo-list__user-info">{user.name} </p>
+          <p className=" photo-list__user-info photo-list__user-location">{location.city}, {location.country}</p>
         </div>
       </div>
 
 
-    </article>
+    </li>
 
   );
 };

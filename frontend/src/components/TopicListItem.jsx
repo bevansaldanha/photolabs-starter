@@ -10,7 +10,6 @@ const sampleDataForTopicListItem = {
 
 const TopicListItem = (props) => {
   const { slug, title } = props;
-  console.log(props);
   return (
     <div className="topic-list__item">
       <span>

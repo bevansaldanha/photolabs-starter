@@ -1,21 +1,23 @@
-import React from 'react';
-
-import PhotoListItem from './components/PhotoListItem';
+import React, { useState } from 'react';
 import './App.scss';
-import PhotoFavButton from 'components/PhotoFavButton';
-import PhotoList from './components/PhotoList';
-import TopNavigationBar from 'components/TopNavigationBar';
 import HomeRoute from 'routes/HomeRoute';
 
 
 // Note: Rendering a single component to build components in isolation
 const App = () => {
-
-
+  const [likes, setLikes] = useState(0)
+  
+  const updateLikes = (likes, val) => {
+    if (val) {
+      setLikes(likes+=1)
+    } else {
+      setLikes(likes-=1)
+    }
+  } 
 
   return (
     <div className="App">
-      <HomeRoute/>
+      <HomeRoute likes = {likes} handler = {updateLikes}/>
     </div>
   );
 };

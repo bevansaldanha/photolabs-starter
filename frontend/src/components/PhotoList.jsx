@@ -6,13 +6,22 @@ import photos from "mocks/photos";
 
 
 const PhotoList = (props) => {
-  const {likes, handler} = props
+  const { likes, handler, selected, isSelected } = props;
+  console.log(selected, 'this');
+
 
 
 
   return (
     <ul className="photo-list">
-      {photos.map((item) => { return <PhotoListItem {...item} key={item.id} likes = {likes} handler = {handler}/>; })}
+      {photos.map((item) => {
+        return <PhotoListItem {...item}
+          key={item.id}
+          likes={likes}
+          handler={handler}
+          selected={selected}
+          isSelected= {isSelected} />;
+      })}
     </ul>
   );
 };

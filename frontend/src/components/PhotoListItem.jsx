@@ -5,13 +5,16 @@ import PhotoFavButton from 'components/PhotoFavButton';
 
 
 const PhotoListItem = (props) => {
-  const {urls,user,location,likes, handler} = props
+  const {urls,user,location,likes, handler, selected, isSelected} = props
+  console.log(selected);
+
+
 
   return (
 
     <li className="photo-list__item">
       <PhotoFavButton likes = {likes} handler = {handler}/>
-      <img className=" photo-list__image" src={urls.regular} />
+      <img className=" photo-list__image" src={urls.regular} onClick={() => isSelected(selected)}/>
 
 
       <div className=" photo-list__user-details ">

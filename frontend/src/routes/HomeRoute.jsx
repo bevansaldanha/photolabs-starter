@@ -6,11 +6,11 @@ import PhotoList from 'components/PhotoList';
 import '../styles/HomeRoute.scss';
 
 const HomeRoute = (props) => {
-  const {likes, handler, selected, isSelected} = {...props}
+  const {likes, handler, selected, isSelected, photos} = {...props}
   return (
     <div className="home-route">
       <TopNavigationBar likes = {likes} handler = {handler}/>
-      <PhotoList likes = {likes} handler = {handler} selected = {selected} isSelected = {isSelected}/>
+      <PhotoList photos = {photos} likes = {likes} handler = {handler} selected = {selected} isSelected = {isSelected}/>
     </div>
   );
 };

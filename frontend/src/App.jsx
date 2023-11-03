@@ -2,13 +2,16 @@ import React, { useState } from 'react';
 import './App.scss';
 import HomeRoute from 'routes/HomeRoute';
 import PhotoDetailsModal from 'routes/PhotoDetailsModal';
+import photos from "mocks/photos";
+
 
 
 // Note: Rendering a single component to build components in isolation
 const App = () => {
   const [likes, setLikes] = useState(0)
   const [selected, setSelected] = useState(false)
-  console.log(selected, 'changed');
+  const [photoInfo, setPhotoInfo] = useState(null)
+
 
 
   
@@ -20,15 +23,16 @@ const App = () => {
     }
   } 
 
-  const isSelected = (selected) => {
+  const isSelected = (selected, photoIndex) => {
     selected? setSelected(false): setSelected(true);
-    console.log("Reached here");
+    selected? setPhotoInfo(null): setPhotoInfo(photos[photoIndex]);
+
   }
 
   return (
     <div className="App">
-      <HomeRoute likes = {likes} handler = {updateLikes} selected = {selected} isSelected = {isSelected}/>
-      {selected && <PhotoDetailsModal/>}
+      <HomeRoute likes = {likes} handler = {updateLikes} selected = {selected} isSelected = {isSelected} photos = {photos}/>
+      {selected && <PhotoDetailsModal photo = {photoInfo} selected= {selected} isSelected= {isSelected} likes = {likes}/>}
     </div>
   );
 };

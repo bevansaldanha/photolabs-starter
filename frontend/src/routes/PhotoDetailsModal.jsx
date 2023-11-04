@@ -9,15 +9,6 @@ import PhotoList from 'components/PhotoList';
 const PhotoDetailsModal = (props) => {
   const { photo, isSelected, likes, handler, selected } = props;
   const similarPhotos = Object.values(photo.similar_photos);
-  console.log(similarPhotos);
-
-  const displaySimilarPhotos = similarPhotos.map((image) => {
-
-    return <p key={image.id}>
-      <img className=" photo-details-modal__image" src={image.urls.regular} />
-    </p>;
-  });
-
   return (
     <div className="photo-details-modal">
       <button className="photo-details-modal__close-button" onClick={() => isSelected(true)}>
@@ -48,35 +39,5 @@ const PhotoDetailsModal = (props) => {
 
   );
 };
-
-/**
- *     <div className="photo-details-modal">
-
-      <button className="photo-details-modal__close-button" onClick={() => isSelected(true)}>
-        <img src={closeSymbol} alt="close symbol" />
-      </button>
-      <PhotoFavButton likes={likes} handler={isSelected} />
-      <img className="photo-details-modal__images photo-details-modal__image" src={photo.urls.regular} />
-
-
-      <div className='photo-details-modal__header'>
-        <div className=" photo-details-modal__photographer-details ">
-
-          <img className=" photo-details-modal__photographer-profile " src={photo.user.profile} />
-          <div className=" photo-details-modal__photographer-info ">
-
-            <p className=" photo-details-modal__photographer-info">{photo.user.name} </p>
-            <p className=" photo-details-modal__photographer-info photo-details-modal__photographer-location">{photo.location.city}, {photo.location.country}</p>
-          </div>
-          
-        </div>
-      </div>
-        <div className='photo-details-modal__images'>
-        See Similar Photos
-          {displaySimilarPhotos}
-      </div>
-    </div>
- * 
- */
 
 export default PhotoDetailsModal;

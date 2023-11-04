@@ -9,12 +9,12 @@ const PhotoListItem = (props) => {
 
 
 
+
   return (
 
     <li className="photo-list__item">
-      <PhotoFavButton likes = {likes} handler = {handler}/>
+      <PhotoFavButton likes = {likes} handler = {handler} id={id}/>
       <img className=" photo-list__image" src={urls.full} onClick={() => isSelected(false,id)}/>
-
 
       <div className=" photo-list__user-details ">
 

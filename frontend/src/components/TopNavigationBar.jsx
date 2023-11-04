@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import '../styles/TopNavigationBar.scss'
 import TopicList from 'components/TopicList';
@@ -6,13 +6,14 @@ import FavBadge from './FavBadge';
 
 
 const TopNavigation = (props) => {
-  const {likes, handler} = {...props}
+  const {likes} = props
+  const displayAlert = Object.values(likes).length
 
   return (
     <div className="top-nav-bar">
       <span className="top-nav-bar__logo">PhotoLabs</span>
       <TopicList />
-      <FavBadge displayAlert = {likes} handler = {handler} isFavPhotoExist={true}/>
+      <FavBadge likes={likes} isFavPhotoExist={true}/>
       
     </div>
   )

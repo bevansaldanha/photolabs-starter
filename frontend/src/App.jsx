@@ -32,7 +32,7 @@ const App = () => {
   return (
     <div className="App">
       <HomeRoute likes = {likes} handler = {updateLikes} selected = {selected} isSelected = {isSelected} photos = {photos}/>
-      {selected && <PhotoDetailsModal photo = {photoInfo} selected= {selected} isSelected= {isSelected} likes = {likes}/>}
+      {selected && <PhotoDetailsModal photo = {photoInfo} selected= {selected} isSelected= {isSelected} likes = {likes} handler = {updateLikes}/>}
     </div>
   );
 };

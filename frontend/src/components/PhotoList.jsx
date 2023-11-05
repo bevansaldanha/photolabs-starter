@@ -17,7 +17,7 @@ const PhotoList = (props) => {
         // const index = indexOf(item)
         return <PhotoListItem {...item}
           key={item.id}
-          id={photos.indexOf(item)}
+          id={item.id}
           likes={likes}
           handler={handler}
           selected={selected}

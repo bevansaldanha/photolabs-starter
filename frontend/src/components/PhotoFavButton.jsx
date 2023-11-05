@@ -4,8 +4,8 @@ import '../styles/PhotoFavButton.scss';
 import FavBadge from './FavBadge';
 
 function PhotoFavButton(props) {
-  const {likes,handler, id} = props
-  const [like, setLike] = useState(false)
+  const {likes,handler, id, isLiked} = props
+  const [like, setLike] = useState(isLiked)
   
   const callback = () => {
 

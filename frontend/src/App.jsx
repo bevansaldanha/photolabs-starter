@@ -5,34 +5,42 @@ import PhotoDetailsModal from 'routes/PhotoDetailsModal';
 import photos from "mocks/photos";
 
 
-let count = 0;
 // Note: Rendering a single component to build components in isolation
 const App = () => {
-  count++;
-  console.log("component render number: ",count);
   const [likes, setLikes] = useState({});
   const [selected, setSelected] = useState(false);
   const [photoInfo, setPhotoInfo] = useState(null);
 
+  console.log("Big man", photoInfo);
+
   const updateLikes = (id, val) => {
     if (val) {
-      likes[`photo${id + 1}`] = id;
-      setLikes({...likes}, likes[`photo${id + 1}`] = id);
+      likes[`photo${id}`] = id;
+      setLikes({ ...likes }, likes[`photo${id}`] = id);
     } else {
-      delete likes[`photo${id + 1}`]
-      setLikes({...likes})
+      delete likes[`photo${id}`];
+      setLikes({ ...likes });
     }
   };
-
   const isSelected = (selected, photoIndex) => {
-    selected ? setSelected(false) : setSelected(true);
-    selected ? setPhotoInfo(null) : setPhotoInfo(photos[photoIndex]);
+    let index = null;
+    if (selected) {
+      setSelected(false);
+      setPhotoInfo(null);
+    } else {
+      if (photoIndex) {
+        
+        index = photos.find(element => element.id === photoIndex);
+      }
+      setSelected(true);
+      setPhotoInfo(index);
+    }
 
   };
 
   return (
     <div className="App">
-      <HomeRoute likes={likes} handler = {updateLikes} selected = {selected} isSelected = {isSelected} photos={photos}/>
+      <HomeRoute likes={likes} handler={updateLikes} selected={selected} isSelected={isSelected} photos={photos} />
 
 
       {selected && <PhotoDetailsModal photo={photoInfo} selected={selected} isSelected={isSelected} likes={likes} handler={updateLikes} />}

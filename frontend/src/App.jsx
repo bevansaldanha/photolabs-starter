@@ -10,8 +10,11 @@ const App = () => {
   const [likes, setLikes] = useState({});
   const [selected, setSelected] = useState(false);
   const [photoInfo, setPhotoInfo] = useState(null);
+  
 
-  console.log("Big man", photoInfo);
+
+
+
 
   const updateLikes = (id, val) => {
     if (val) {
@@ -25,25 +28,24 @@ const App = () => {
   const isSelected = (selected, photoIndex) => {
     let index = null;
     if (selected) {
-      setSelected(false);
-      setPhotoInfo(null);
-    } else {
-      if (photoIndex) {
-        
-        index = photos.find(element => element.id === photoIndex);
-      }
+      index = photos.find(element => element.id === photoIndex);
       setSelected(true);
       setPhotoInfo(index);
+    } else {
+      setSelected(false);
     }
 
   };
 
+
+
+
   return (
     <div className="App">
-      <HomeRoute likes={likes} handler={updateLikes} selected={selected} isSelected={isSelected} photos={photos} />
+      <HomeRoute likes={likes} updateLikes={updateLikes} selected={selected} isSelected={isSelected} photos={photos}/>
 
 
-      {selected && <PhotoDetailsModal photo={photoInfo} selected={selected} isSelected={isSelected} likes={likes} handler={updateLikes} />}
+      {selected && <PhotoDetailsModal photo={photoInfo} selected={selected} isSelected={isSelected} likes={likes} updateLikes={updateLikes} />}
     </div>
   );
 };

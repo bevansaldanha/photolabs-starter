@@ -7,7 +7,6 @@ import FavBadge from './FavBadge';
 
 const TopNavigation = (props) => {
   const {likes} = props
-  const displayAlert = Object.values(likes).length
 
   return (
     <div className="top-nav-bar">

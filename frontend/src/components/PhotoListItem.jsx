@@ -1,23 +1,21 @@
-import React from "react";
+import React, { useCallback, useState } from 'react';
 import "../styles/PhotoListItem.scss";
 import PhotoFavButton from 'components/PhotoFavButton';
 
 
 
 const PhotoListItem = (props) => {
-  const {urls,user,location,likes, handler, selected, isSelected, id} = props
+ 
 
-  let isLiked = false
-  if (likes && Object.values(likes).includes(id)) {
-    isLiked = true
-  }
+
+  const {urls,user,location,likes, updateLikes, selected, isSelected, id, isLiked} = props
 
 
   return (
 
     <li className="photo-list__item">
-      <PhotoFavButton likes = {likes} handler = {handler} id={id} isLiked = {isLiked}/>
-      <img className=" photo-list__image" src={urls.full} onClick={() => isSelected(false,id)}/>
+      <PhotoFavButton likes = {likes} updateLikes = {updateLikes} id={id} isLiked = {isLiked} />
+      <img className=" photo-list__image" src={urls.full} onClick={() => isSelected(true,id)}/>
 
       <div className=" photo-list__user-details ">
 

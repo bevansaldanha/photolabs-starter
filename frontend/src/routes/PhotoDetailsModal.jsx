@@ -7,21 +7,21 @@ import PhotoList from 'components/PhotoList';
 
 
 const PhotoDetailsModal = (props) => {
-  const { photo, isSelected, likes, handler, selected } = props;
-  console.log(likes, "here",photo);
+  const { photo,updateLikes, isSelected, likes, handler, selected } = props;
   const similarPhotos = Object.values(photo.similar_photos);
 
   let isLiked = false
-  if (likes && Object.values(likes).includes(Number(photo.id)-1)) {
+  if (likes && Object.values(likes).includes(photo.id)) {
     isLiked = true
   }
+
   return (
     <div className="photo-details-modal">
-      <button className="photo-details-modal__close-button" onClick={() => isSelected(true)}>
+      <button className="photo-details-modal__close-button" onClick={() => isSelected(false)}>
         <img src={closeSymbol} alt="close symbol" />
       </button>
       <div className='photo-details-modal__images'>
-        <PhotoFavButton likes={likes} handler={isSelected} id = {photo.id} isLiked = {isLiked}/>
+        <PhotoFavButton likes={likes} handler={isSelected} id = {photo.id} isLiked = {isLiked} updateLikes={updateLikes}/>
         <img className=" photo-details-modal__image" src={photo.urls.regular} />
         <div className='photo-details-modal__header'>
           <div className=" photo-details-modal__photographer-details ">
@@ -37,7 +37,7 @@ const PhotoDetailsModal = (props) => {
           See Similar Photos
         </div>
         <div className='photo-details-top-bar'>
-        <PhotoList photos = {similarPhotos} likes = {likes} handler = {handler} selected = {selected} isSelected = {isSelected}/>
+        <PhotoList photos = {similarPhotos} likes = {likes} handler = {handler} selected = {selected} isSelected = {isSelected} isLiked = {isLiked} updateLikes={updateLikes}/>
       </div>
       </div>
     </div>

@@ -1,36 +1,54 @@
-import React, { useState } from 'react';
+import React, { useReducer, useState } from 'react';
 import photos from "mocks/photos";
+export const ACTIONS = {
+  FAV_PHOTO_CHANGED: 'FAV_PHOTO_CHANGED',
+  DISPLAY_PHOTO_DETAILS: 'DISPLAY_PHOTO_DETAILS'
+};
 
+const reducer = (state, action) => {
+  switch (action.type) {
+    case 'FAV_PHOTO_CHANGED':
+      const updatedLikes1 = { ...state.likes };
+      if (action.value.val) {
+
+        updatedLikes1[`photo${action.value.id}`] = action.value.id;
+        const updatedState1 = { ...state, likes: updatedLikes1 };
+        return updatedState1;
+      } else {
+        delete updatedLikes1[`photo${action.value.id}`];
+        const updatedState1 = { ...state, likes: updatedLikes1 };
+        return updatedState1;
+      }
+    case 'DISPLAY_PHOTO_DETAILS':
+      let index = null;
+      if (action.value.selected) {
+        index = photos.find(element => element.id === action.value.photoIndex);
+        const updatedState2 = { ...state, selected: true, photoInfo: index };
+        return updatedState2
+
+      } else {
+        const updatedState2 = { ...state, selected: false, photoInfo: null };
+        return updatedState2
+      }
+    default:
+      throw new Error(
+        `Tried to reduce with unsupported action type: ${action.type}`
+      );
+  }
+};
+const initialState = { likes: {}, selected: false, photoInfo: null };
 
 const useApplicationData = () => {
-  
+  const [state, dispatch] = useReducer(reducer, initialState);
 
-  const [likes, setLikes] = useState({});
-  const [selected, setSelected] = useState(false);
-  const [photoInfo, setPhotoInfo] = useState(null);
   const updateToFavPhotoIds = (id, val) => {
-    if (val) {
-      likes[`photo${id}`] = id;
-      setLikes({ ...likes }, likes[`photo${id}`] = id);
-    } else {
-      delete likes[`photo${id}`];
-      setLikes({ ...likes });
-    }
+    dispatch({ type: ACTIONS.FAV_PHOTO_CHANGED, value: { id, val } });
   };
   const onPhotoSelect = (selected, photoIndex) => {
-    let index = null;
-    if (selected) {
-      index = photos.find(element => element.id === photoIndex);
-      setSelected(true);
-      setPhotoInfo(index);
-    } else {
-      setSelected(false);
-    }
-    
+    dispatch({ type: ACTIONS.DISPLAY_PHOTO_DETAILS, value: { selected, photoIndex } });
   };
-  const state = {likes,selected,photoInfo}
 
-  return(likes,selected,photoInfo,state,updateToFavPhotoIds,onPhotoSelect)
+  return { state, updateToFavPhotoIds, onPhotoSelect };
 };
 
 export default useApplicationData;

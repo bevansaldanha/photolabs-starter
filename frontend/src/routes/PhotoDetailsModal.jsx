@@ -22,7 +22,7 @@ const PhotoDetailsModal = (props) => {
       </button>
       <div className='photo-details-modal__images'>
         <PhotoFavButton likes={likes} handler={isSelected} id = {photo.id} isLiked = {isLiked} updateLikes={updateLikes}/>
-        <img className=" photo-details-modal__image" src={photo.urls.regular} />
+        <img className=" photo-details-modal__image" src={photo.urls.full} />
         <div className='photo-details-modal__header'>
           <div className=" photo-details-modal__photographer-details ">
 

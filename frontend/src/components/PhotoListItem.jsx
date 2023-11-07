@@ -15,7 +15,7 @@ const PhotoListItem = (props) => {
 
     <li className="photo-list__item">
       <PhotoFavButton likes={likes} updateLikes={updateLikes} id={id} isLiked={isLiked} />
-      <img className=" photo-list__image" src={urls.full} onClick={() => isSelected(true, id)} />
+      <img className=" photo-list__image" src={urls.regular} onClick={() => isSelected(true, id)} />
 
       <div className=" photo-list__user-details ">
 

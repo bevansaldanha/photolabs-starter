@@ -29,3 +29,7 @@ npm start
 !['photolabs pic 2'](https://github.com/bevansaldanha/photolabs-starter/blob/main/docs/PhotoLabs-2.png?raw=true)
 
 !['photolabs pic 3'](https://github.com/bevansaldanha/photolabs-starter/blob/main/docs/PhotoLabs-3.png?raw=true)
+
+## Notes
+
+Styling for modal can be better

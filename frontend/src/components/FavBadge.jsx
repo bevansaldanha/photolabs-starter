@@ -5,9 +5,9 @@ import '../styles/FavBadge.scss';
 
 
 const FavBadge = ({ likes, isFavPhotoExist }) => {
-  let displayAlert =  false;
-  if(likes && Object.values(likes).length) { 
-    displayAlert = true
+  let displayAlert = false;
+  if (likes && Object.values(likes).length) {
+    displayAlert = true;
   }
 
   return (

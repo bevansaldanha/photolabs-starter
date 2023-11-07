@@ -73,14 +73,15 @@ const useApplicationData = () => {
   }, []);
 
   useEffect(() => {
-    if(state.selectedTopic) {
+    if (state.selectedTopic) {
       fetch(`api/topics/photos/${state.selectedTopic}`)
-      .then(res => res.json())
-      .then(data => { dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: data }); });
-    } else{    
-    fetch('api/photos')
-    .then(res => res.json())
-    .then(data => { dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: data }); })}
+        .then(res => res.json())
+        .then(data => { dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: data }); });
+    } else {
+      fetch('api/photos')
+        .then(res => res.json())
+        .then(data => { dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: data }); });
+    }
   }, [state.selectedTopic]);
 
   const updateToFavPhotoIds = (id, val) => {
@@ -91,9 +92,9 @@ const useApplicationData = () => {
   };
   const newTopic = (id) => {
     dispatch({ type: ACTIONS.CHANGE_TOPIC, value: id });
-  }
+  };
 
-  return { state, updateToFavPhotoIds, onPhotoSelect, newTopic};
+  return { state, updateToFavPhotoIds, onPhotoSelect, newTopic };
 };
 
 export default useApplicationData;

@@ -40,3 +40,12 @@ Running the server so it returns an error when saving/deleting for testing the c
 ```sh
 npm run error
 ```
+
+## Screenshots
+
+(https://github.com/bevansaldanha/photolabs-starter/blob/main/docs/PhotoLabs-1.png?raw=true)
+
+(https://github.com/bevansaldanha/photolabs-starter/blob/main/docs/PhotoLabs-2.png?raw=true)
+
+(https://github.com/bevansaldanha/photolabs-starter/blob/main/docs/PhotoLabs-3.png?raw=true)
+

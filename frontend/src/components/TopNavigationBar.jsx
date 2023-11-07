@@ -6,12 +6,12 @@ import FavBadge from './FavBadge';
 
 
 const TopNavigation = (props) => {
-  const {likes} = props
+  const {likes, topics, newTopic} = props
 
   return (
     <div className="top-nav-bar">
-      <span className="top-nav-bar__logo">PhotoLabs</span>
-      <TopicList />
+      <span className="top-nav-bar__logo" onClick={()=> newTopic(null)}>PhotoLabs</span>
+      <TopicList topics ={topics} newTopic = {newTopic}/>
       <FavBadge likes={likes} isFavPhotoExist={true}/>
       
     </div>

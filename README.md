@@ -24,7 +24,7 @@ npm start
 ```
 ## Screenshots
 
-!(https://github.com/bevansaldanha/photolabs-starter/blob/main/docs/PhotoLabs-1.png?raw=true)
+!['photolabs pic 1'](https://github.com/bevansaldanha/photolabs-starter/blob/main/docs/PhotoLabs-1.png?raw=true)
 
 !(https://github.com/bevansaldanha/photolabs-starter/blob/main/docs/PhotoLabs-2.png?raw=true)
 

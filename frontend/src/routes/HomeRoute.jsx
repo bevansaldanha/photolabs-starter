@@ -7,10 +7,10 @@ import '../styles/HomeRoute.scss';
 const HomeRoute = (props) => {
 
 
-  const {likes, updateLikes, selected, isSelected, photos, topics, newTopic} = props
+  const {likes, updateLikes, selected, isSelected, photos, topics, newTopic, viewLikedPhotosView} = props
   return (
     <div className="home-route">
-      <TopNavigationBar likes = {likes} updateLikes = {updateLikes} topics= {topics} newTopic = {newTopic}/>
+      <TopNavigationBar likes = {likes} updateLikes = {updateLikes} topics= {topics} newTopic = {newTopic} viewLikedPhotosView={viewLikedPhotosView}/>
       <PhotoList likes = {likes} photos = {photos}  updateLikes = {updateLikes} selected = {selected} isSelected = {isSelected} />
     </div>
   );
